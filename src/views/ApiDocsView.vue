@@ -3,7 +3,7 @@
     <div class="page-header">
       <h1>{{ $t('api.title') }}</h1>
       <el-tag effect="dark" type="success" round>
-        Base URL: http://localhost:3001/api
+        Base URL: {{ BASE_URL }}
       </el-tag>
     </div>
 
@@ -278,22 +278,24 @@ const sendTest = async (ep: any) => {
 
 // ─── Docs Content ────────────────────────────────────────────────────────
 
+const BASE_URL = window.location.origin + '/api';
+
 const quickStartCode = `# 1. Login (captcha tự động OCR)
-curl -X POST http://localhost:3001/api/login \\
+curl -X POST ${BASE_URL}/login \\
   -H "Content-Type: application/json" \\
   -d '{"username": "0912345678", "password": "your_password"}'
 
 # 2. Lấy số dư
-curl -X POST http://localhost:3001/api/balance \\
+curl -X POST ${BASE_URL}/balance \\
   -H "Content-Type: application/json"
 
 # 3. Lịch sử giao dịch
-curl -X POST http://localhost:3001/api/transactions \\
+curl -X POST ${BASE_URL}/transactions \\
   -H "Content-Type: application/json" \\
   -d '{"accountNumber": "0912345678", "fromDate": "01/03/2026", "toDate": "27/03/2026"}'
 
 # 4. Generate dataEnc (không cần login)
-curl -X POST http://localhost:3001/api/encrypt \\
+curl -X POST ${BASE_URL}/encrypt \\
   -H "Content-Type: application/json" \\
   -d '{"payload": {"userId": "test", "action": "check"}, "sessionId": "0"}'`;
 
@@ -310,7 +312,7 @@ const endpoints = [
   "username": "0912345678",
   "sessionAge": 120
 }`,
-    integration: `const res = await fetch("http://localhost:3001/api/status");
+    integration: `const res = await fetch("${BASE_URL}/status");
 const data = await res.json();
 console.log(data.loggedIn); // true/false`,
   },
@@ -336,7 +338,7 @@ console.log(data.loggedIn); // true/false`,
     "lastLogin": "27/03/2026 01:00:00"
   }
 }`,
-    integration: `const res = await fetch("http://localhost:3001/api/login", {
+    integration: `const res = await fetch("${BASE_URL}/login", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
@@ -372,7 +374,7 @@ if (data.success) {
     ]
   }
 }`,
-    integration: `const res = await fetch("http://localhost:3001/api/balance", {
+    integration: `const res = await fetch("${BASE_URL}/balance", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
 });
@@ -410,7 +412,7 @@ data.data.accounts.forEach(a => {
     }
   ]
 }`,
-    integration: `const res = await fetch("http://localhost:3001/api/transactions", {
+    integration: `const res = await fetch("${BASE_URL}/transactions", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
@@ -446,7 +448,7 @@ data.data.forEach(tx => {
   "success": true,
   "dataEnc": "eyJhbGciOiJIUzI1NiIs..."
 }`,
-    integration: `const res = await fetch("http://localhost:3001/api/encrypt", {
+    integration: `const res = await fetch("${BASE_URL}/encrypt", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
@@ -474,7 +476,7 @@ console.log("dataEnc:", dataEnc);`,
 const fullExample = `import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:3001/api",
+  baseURL: "${BASE_URL}",
   headers: { "Content-Type": "application/json" },
 });
 
@@ -525,7 +527,7 @@ main().catch(console.error);`;
 
 const pythonExample = `import requests
 
-BASE = "http://localhost:3001/api"
+BASE = "${BASE_URL}"
 
 # 1. Login
 login = requests.post(f"{BASE}/login", json={

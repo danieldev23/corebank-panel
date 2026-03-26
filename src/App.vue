@@ -69,7 +69,7 @@
               size="small"
               @click="logout"
             >
-              <el-icon><SwitchButton /></el-icon>
+              <el-icon style="margin-right: 4px"><SwitchButton /></el-icon>
               {{ $t('nav.logout') }}
             </el-button>
           </div>
@@ -201,6 +201,8 @@ onMounted(() => {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  white-space: nowrap;
+  line-height: 1.2;
 }
 
 .brand-badge {
