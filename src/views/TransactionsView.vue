@@ -155,7 +155,6 @@
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { useI18n } from "vue-i18n";
 import { Search } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
 import api from "../api";
@@ -200,7 +199,6 @@ interface Transaction {
 
 const route = useRoute();
 const router = useRouter();
-const { t } = useI18n();
 const loading = ref(false);
 const searched = ref(false);
 const transactions = ref<Transaction[]>([]);
@@ -305,7 +303,7 @@ const fetchTransactions = async () => {
 
     if (data.success) {
       // Sort by latest first
-      transactions.value = (data.data || []).sort((a: any, b: any) => {
+      transactions.value = (data.data || []).sort(() => {
         // Basic sort: reverse array assuming API returns older to newer
         return -1;
       });

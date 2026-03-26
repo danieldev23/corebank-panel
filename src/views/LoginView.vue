@@ -83,13 +83,11 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
-import { useI18n } from "vue-i18n";
 import { ElMessage } from "element-plus";
 import { User, Lock, Key, Unlock, Monitor } from "@element-plus/icons-vue";
 import api from "../api";
 
 const router = useRouter();
-const { t } = useI18n();
 const loading = ref(false);
 const progress = ref(0);
 const statusText = ref("");

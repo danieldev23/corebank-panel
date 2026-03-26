@@ -61,7 +61,7 @@
               {{ currentLocale.toUpperCase() }}
             </el-button>
             <el-button text size="small" @click="toggleTheme">
-              <el-icon><component :is="isDark ? 'Sunny' : 'Moon'" /></el-icon>
+              <el-icon><component :is="isDark ? Sunny : Moon" /></el-icon>
             </el-button>
             <el-button
               type="danger"
@@ -118,7 +118,7 @@ import api from "./api";
 
 const route = useRoute();
 const router = useRouter();
-const { t, locale } = useI18n();
+const { locale } = useI18n();
 const sessionActive = ref(false);
 const mobileMenuOpen = ref(false);
 

@@ -207,13 +207,9 @@
 
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import { useI18n } from "vue-i18n";
 import { ElMessage } from "element-plus";
 import { Lightning, Connection, Promotion, VideoPlay, Monitor, Position } from "@element-plus/icons-vue";
 import api from "../api";
-
-const { t } = useI18n();
-
 const copy = async (text: string) => {
   try {
     await navigator.clipboard.writeText(text);
