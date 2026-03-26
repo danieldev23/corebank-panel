@@ -35,7 +35,6 @@ RUN npm install --omit=dev
 
 # Copy backend files and shared types
 COPY server/ ./server/
-COPY src/types.ts ./src/
 
 # Copy the built frontend static files from the build stage
 COPY --from=build-stage /app/dist ./dist
