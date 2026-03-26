@@ -1,0 +1,39 @@
+{
+  "name": "mbbank-panel-pro",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "server": "tsx server/index.ts",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "axios": "^1.13.6",
+    "cors": "^2.8.6",
+    "echarts": "^6.0.0",
+    "element-plus": "^2.13.6",
+    "express": "^5.2.1",
+    "onnxruntime-node": "^1.24.3",
+    "qrcode.vue": "^3.8.0",
+    "sharp": "^0.34.5",
+    "tsx": "^4.21.0",
+    "undici": "^7.24.6",
+    "vue": "^3.5.30",
+    "vue-echarts": "^8.0.1",
+    "vue-i18n": "^9.14.5",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.12.0",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "@vue/tsconfig": "^0.9.0",
+    "typescript": "~5.9.3",
+    "vite": "^8.0.1",
+    "vue-tsc": "^3.2.5"
+  }
+}

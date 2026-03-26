@@ -1,0 +1,202 @@
+/* ─── MB Bank Tool - Global Styles ─────────────────────────────────────── */
+
+:root {
+  --bg-primary: #f2f5f9;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f7f9fc;
+  --bg-input: #ffffff;
+  --border-color: #e4e7ed;
+  --border-active: #409eff;
+  --text-primary: #303133;
+  --text-secondary: #606266;
+  --text-muted: #909399;
+  --accent: #409eff;
+  --accent-glow: rgba(64, 158, 255, 0.15);
+  --success: #67c23a;
+  --warning: #e6a23c;
+  --danger: #f56c6c;
+  --credit: #67c23a;
+  --debit: #f56c6c;
+  --sidebar-width: 260px;
+  --header-height: 64px;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html.dark {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #111827;
+  --bg-card: #1a2332;
+  --bg-card-hover: #1f2b3d;
+  --bg-input: #0d1117;
+  --border-color: #1e3050;
+  --text-primary: #e8eaf0;
+  --text-secondary: #8b95a5;
+  --text-muted: #5a6577;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Element Plus Dark Theme Overrides ────────────────────────────────── */
+
+.el-card {
+  --el-card-bg-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.el-card:hover {
+  border-color: var(--border-active);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.el-input__wrapper {
+  background: var(--bg-input) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: none !important;
+  transition: var(--transition) !important;
+}
+
+.el-input__wrapper:hover,
+.el-input__wrapper.is-focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 12px var(--accent-glow) !important;
+}
+
+.el-input__inner {
+  color: var(--text-primary) !important;
+}
+
+.el-textarea__inner {
+  background: var(--bg-input) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-primary) !important;
+  transition: var(--transition) !important;
+}
+
+.el-textarea__inner:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 12px var(--accent-glow) !important;
+}
+
+.el-button--primary:not(.is-text):not(.is-plain):not(.is-link) {
+  background: linear-gradient(135deg, #409eff, #2563eb) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 600 !important;
+  transition: var(--transition) !important;
+}
+
+.el-button--primary:not(.is-text):not(.is-plain):not(.is-link):hover {
+  background: linear-gradient(135deg, #66b1ff, #409eff) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(64, 158, 255, 0.4) !important;
+}
+
+.el-table {
+  --el-table-bg-color: transparent !important;
+  --el-table-tr-bg-color: transparent !important;
+  --el-table-header-bg-color: var(--bg-card) !important;
+  --el-table-row-hover-bg-color: var(--bg-card-hover) !important;
+  --el-table-text-color: var(--text-primary) !important;
+  --el-table-header-text-color: var(--text-secondary) !important;
+  --el-table-border-color: var(--border-color) !important;
+}
+
+.el-menu {
+  border-right: none !important;
+}
+
+.el-date-editor {
+  --el-date-editor-width: 100%;
+}
+
+/* ─── Scrollbar ────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ─── Page Transitions ─────────────────────────────────────────────────── */
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+/* ─── Utilities ────────────────────────────────────────────────────────── */
+
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+html.dark .glass {
+  background: rgba(26, 35, 50, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glow-text {
+  background: linear-gradient(135deg, #409eff, #67c23a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px var(--accent-glow); }
+  50% { box-shadow: 0 0 24px var(--accent-glow); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}

@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mb-bank-tool:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mb-bank-tool
+    restart: always
+    ports:
+      - "${PORT:-2001}:${PORT:-2001}"
+    volumes:
+      # Persist settings between container restarts and rebuilds
+      - ./server/data:/app/server/data
+    env_file:
+      - .env
+    environment:
+      - PORT=${PORT:-2001}
+      - NODE_ENV=production
