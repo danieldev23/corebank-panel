@@ -9,51 +9,33 @@
     <div class="login-container glass">
       <div class="login-header">
         <div class="logo">
-          <el-icon><Monitor /></el-icon>
+          <el-icon>
+            <Monitor />
+          </el-icon>
         </div>
         <h1>{{ $t('login.title') }}</h1>
         <p class="subtitle">{{ $t('login.desc') }}</p>
       </div>
 
-      <el-form
-        :model="form"
-        label-position="top"
-        class="login-form"
-        @submit.prevent="handleLogin"
-      >
+      <el-form :model="form" label-position="top" class="login-form" @submit.prevent="handleLogin">
         <el-form-item :label="$t('login.phone')">
-          <el-input
-            v-model="form.username"
-            :placeholder="$t('login.phone')"
-            :prefix-icon="User"
-            size="large"
-          />
+          <el-input v-model="form.username" :placeholder="$t('login.phone')" :prefix-icon="User" size="large" />
         </el-form-item>
 
         <el-form-item :label="$t('login.password')">
-          <el-input
-            v-model="form.password"
-            type="password"
-            :placeholder="$t('login.password')"
-            :prefix-icon="Lock"
-            size="large"
-            show-password
-          />
+          <el-input v-model="form.password" type="password" :placeholder="$t('login.password')" :prefix-icon="Lock"
+            size="large" show-password />
         </el-form-item>
 
-        <el-button
-          type="primary"
-          size="large"
-          class="login-btn"
-          :loading="loading"
-          @click="handleLogin"
-          native-type="submit"
-        >
+        <el-button type="primary" size="large" class="login-btn" :loading="loading" @click="handleLogin"
+          native-type="submit">
           <template v-if="loading">
             <span>{{ statusText }}</span>
           </template>
           <template v-else>
-            <el-icon><Key /></el-icon>
+            <el-icon>
+              <Key />
+            </el-icon>
             <span>{{ $t('login.loginBtn') }}</span>
           </template>
         </el-button>
@@ -61,20 +43,8 @@
 
       <!-- Login progress -->
       <div v-if="loading" class="login-progress">
-        <el-progress
-          :percentage="progress"
-          :stroke-width="4"
-          :show-text="false"
-          status="success"
-        />
+        <el-progress :percentage="progress" :stroke-width="4" :show-text="false" status="success" />
         <span class="progress-text">{{ statusText }}</span>
-      </div>
-
-      <div class="login-footer">
-        <el-button text size="small" @click="goToEncrypt">
-          <el-icon><Unlock /></el-icon>
-          {{ $t('nav.dataEnc') }}
-        </el-button>
       </div>
     </div>
   </div>
@@ -130,6 +100,7 @@ const handleLogin = async () => {
     clearInterval(progressInterval);
 
     if (data.success) {
+      localStorage.setItem('isAuthenticated', 'true');
       progress.value = 100;
       statusText.value = "✅ Login successful!";
       ElMessage.success(
@@ -204,9 +175,19 @@ const goToEncrypt = () => router.push("/encrypt");
 }
 
 @keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -20px) scale(1.05); }
-  66% { transform: translate(-20px, 15px) scale(0.95); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+
+  66% {
+    transform: translate(-20px, 15px) scale(0.95);
+  }
 }
 
 .login-container {

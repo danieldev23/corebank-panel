@@ -568,7 +568,7 @@ print(f"dataEnc: {enc['dataEnc']}")`;
 
 <style scoped>
 .api-docs {
-  max-width: 1000px;
+  width: 100%;
 }
 
 .page-header {
