@@ -57,7 +57,6 @@ export class TransactionMonitor {
     // 1. Ensure logged in
     const session = this.mbService.getSession();
     if (!session?.sessionId) {
-      console.log('Monitor: Not logged in. Skipping check.');
       return;
     }
 
