@@ -321,7 +321,7 @@ console.log(data.loggedIn); // true/false`,
     path: "/login",
     description: "Đăng nhập (tự động giải captcha bằng AI OCR)",
     body: [
-      { field: "username", type: "string", required: true, desc: "Số điện thoại / tên đăng nhập MB Bank" },
+      { field: "username", type: "string", required: true, desc: "Số điện thoại / tên đăng nhập Core Bank" },
       { field: "password", type: "string", required: true, desc: "Mật khẩu (plaintext, server sẽ hash MD5)" },
     ],
     reqExample: `{
@@ -389,7 +389,7 @@ data.data.accounts.forEach(a => {
     path: "/transactions",
     description: "Lịch sử giao dịch theo khoảng thời gian (cần login)",
     body: [
-      { field: "accountNumber", type: "string", required: true, desc: "Số tài khoản MB Bank" },
+      { field: "accountNumber", type: "string", required: true, desc: "Số tài khoản Core Bank" },
       { field: "fromDate", type: "string", required: true, desc: "Ngày bắt đầu (DD/MM/YYYY)" },
       { field: "toDate", type: "string", required: true, desc: "Ngày kết thúc (DD/MM/YYYY), tối đa 90 ngày" },
     ],

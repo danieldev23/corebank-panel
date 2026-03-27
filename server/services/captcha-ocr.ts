@@ -1,7 +1,7 @@
 /**
  * Captcha OCR Service
  *
- * Uses a purpose-trained ONNX model to recognize MB Bank captcha images.
+ * Uses a purpose-trained ONNX model to recognize Core Bank captcha images.
  * Model auto-downloads from GitHub on first run and is cached locally.
  */
 
@@ -91,7 +91,7 @@ export async function recognizeCaptcha(
     }
   }
 
-  // MB Bank captcha is always 6 characters
+  // Core Bank captcha is always 6 characters
   if (text.length !== 6) return null;
   return text;
 }

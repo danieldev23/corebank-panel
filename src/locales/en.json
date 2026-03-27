@@ -41,7 +41,7 @@
   },
   "login": {
     "title": "MB Tool PRO",
-    "desc": "Automate MB Bank operations using ONNX-powered OCR to solve captchas instantly.",
+    "desc": "Automate Core Bank operations using ONNX-powered OCR to solve captchas instantly.",
     "phone": "Phone Number",
     "password": "Password",
     "loginBtn": "Login (Auto OCR)",

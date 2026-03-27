@@ -54,7 +54,7 @@
 import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
-import { User, Lock, Key, Unlock, Monitor } from "@element-plus/icons-vue";
+import { User, Lock, Key, Monitor } from "@element-plus/icons-vue";
 import api from "../api";
 
 const router = useRouter();
@@ -75,7 +75,7 @@ const handleLogin = async () => {
 
   loading.value = true;
   progress.value = 10;
-  statusText.value = "🔐 Connecting to MB Bank...";
+  statusText.value = "🔐 Connecting to Core Bank...";
 
   try {
     // Simulate progress while auto-login runs
@@ -119,7 +119,7 @@ const handleLogin = async () => {
   }
 };
 
-const goToEncrypt = () => router.push("/encrypt");
+
 </script>
 
 <style scoped>

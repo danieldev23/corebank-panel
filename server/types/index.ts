@@ -1,4 +1,4 @@
-/** MB Bank API response wrapper */
+/** Core Bank API response wrapper */
 export interface MBResponse<T = unknown> {
   result: {
     ok: boolean;
@@ -9,7 +9,7 @@ export interface MBResponse<T = unknown> {
   [key: string]: T | unknown;
 }
 
-/** Captcha response from MB Bank */
+/** Captcha response from Core Bank */
 export interface CaptchaResponse {
   imageString: string;
   result: {

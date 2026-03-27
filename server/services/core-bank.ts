@@ -1,7 +1,7 @@
 /**
- * MB Bank API Service
+ * Core Bank API Service
  *
- * Clean implementation of MB Bank's internet banking API.
+ * Clean implementation of Core Bank's internet banking API.
  * Handles login, balance, and transaction history.
  */
 
@@ -65,9 +65,9 @@ function md5(input: string): string {
   return createHash("md5").update(input).digest("hex");
 }
 
-// ─── MB Bank Service ────────────────────────────────────────────────────────
+// ─── Core Bank Service ────────────────────────────────────────────────────────
 
-export class MBBankService {
+export class CoreBankService {
   private client = new Client(BASE_URL);
   private session: SessionState | null = null;
 

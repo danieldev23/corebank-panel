@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-  mb-bank-tool:
+  core-bank-tool:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: mb-bank-tool
+    container_name: core-bank-tool
     restart: always
     ports:
       - "${PORT:-2001}:${PORT:-2001}"

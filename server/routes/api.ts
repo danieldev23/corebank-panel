@@ -3,7 +3,7 @@
  */
 
 import { Router, type Request, type Response } from "express";
-import { MBBankService } from "../services/mb-bank";
+import { CoreBankService } from "../services/core-bank";
 import { warmup } from "../services/wasm-engine";
 import { getSettings, saveSettings } from "../services/settings";
 import { triggerTestNotification } from "../services/notifier";
@@ -11,13 +11,13 @@ import { TransactionMonitor } from "../services/monitor";
 import type { LoginRequest } from "../types";
 
 const router = Router();
-export const mbService = new MBBankService();
-const txMonitor = new TransactionMonitor(mbService);
+export const coreBankService = new CoreBankService();
+const txMonitor = new TransactionMonitor(coreBankService);
 
 // ─── Health / Status ────────────────────────────────────────────────────────
 
 router.get("/status", (_req: Request, res: Response) => {
-  const session = mbService.getSession();
+  const session = coreBankService.getSession();
   res.json({
     status: "ok",
     loggedIn: !!session?.sessionId,
@@ -43,7 +43,7 @@ router.post("/warmup", async (_req: Request, res: Response) => {
 
 router.post("/captcha", async (_req: Request, res: Response) => {
   try {
-    const captcha = await mbService.getCaptcha();
+    const captcha = await coreBankService.getCaptcha();
     res.json({ success: true, ...captcha });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
@@ -64,7 +64,7 @@ router.post("/login", async (req: Request, res: Response) => {
       return;
     }
 
-    const result = await mbService.autoLogin(username, password);
+    const result = await coreBankService.autoLogin(username, password);
     res.json(result);
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
@@ -75,7 +75,7 @@ router.post("/login", async (req: Request, res: Response) => {
 
 router.post("/balance", async (_req: Request, res: Response) => {
   try {
-    const balance = await mbService.getBalance();
+    const balance = await coreBankService.getBalance();
     res.json({ success: true, data: balance });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
@@ -96,7 +96,7 @@ router.post("/transactions", async (req: Request, res: Response) => {
       return;
     }
 
-    const transactions = await mbService.getTransactions(
+    const transactions = await coreBankService.getTransactions(
       accountNumber,
       fromDate,
       toDate

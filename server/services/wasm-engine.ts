@@ -1,7 +1,7 @@
 /**
  * WASM Encryption Engine
  *
- * Downloads MB Bank's WASM binary and provides the Go runtime bridge
+ * Downloads Core Bank's WASM binary and provides the Go runtime bridge
  * to execute the `bder()` encryption function natively in Node.js.
  */
 
@@ -563,18 +563,18 @@ class GoRuntime {
 
 let cachedWasm: Buffer | null = null;
 
-/** Download WASM binary from MB Bank (cached after first call) */
+/** Download WASM binary from Core Bank (cached after first call) */
 async function downloadWasm(): Promise<Buffer> {
   if (cachedWasm) return cachedWasm;
 
-  console.log("⬇️  Downloading WASM from MB Bank...");
+  console.log("⬇️  Downloading WASM from Core Bank...");
   const res = await request(WASM_URL, { headers: HEADERS });
   cachedWasm = Buffer.from(await res.body.arrayBuffer());
   console.log(`✅ WASM downloaded (${(cachedWasm.length / 1024).toFixed(0)} KB)`);
   return cachedWasm;
 }
 
-/** Encrypt a request payload using MB Bank's WASM `bder()` function */
+/** Encrypt a request payload using Core Bank's WASM `bder()` function */
 export async function encrypt(
   data: Record<string, unknown>,
   sessionId = "0"

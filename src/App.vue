@@ -16,7 +16,7 @@
           <div class="brand-icon">
             <el-icon><Monitor /></el-icon>
           </div>
-          <h1 class="brand-title">MBBank Panel</h1>
+          <h1 class="brand-title">CoreBank Panel</h1>
           <span class="brand-badge">PRO</span>
         </div>
 

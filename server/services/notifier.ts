@@ -57,7 +57,7 @@ export const triggerTestNotification = async () => {
     refNo: 'TEST-' + Date.now(),
     creditAmount: 50000,
     debitAmount: 0,
-    description: 'TEST NOTIFICATION MB BANK TOOL PRO',
+    description: 'TEST NOTIFICATION CORE BANK TOOL PRO',
     transactionDate: new Date().toLocaleString(),
     accountNo: '0987654321',
   };
@@ -95,7 +95,7 @@ export const broadcastTransaction = async (tx: any, isTest = false) => {
       { name: 'Mã GD', value: tx.refNo || 'N/A', inline: true },
       { name: 'Thời gian', value: tx.transactionDate || 'N/A', inline: true }
     ],
-    footer: { text: 'MB Bank Tool PRO' },
+    footer: { text: 'Core Bank Tool PRO' },
     timestamp: new Date().toISOString()
   };
 

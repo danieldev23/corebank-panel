@@ -1,5 +1,5 @@
 /**
- * MB Bank Tool - Backend Server
+ * Core Bank Tool - Backend Server
  */
 
 import express from "express";
@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 // ─── Start ──────────────────────────────────────────────────────────────────
 
 app.listen(PORT, async () => {
-  console.log(`\n🏦 MBBank Panel PRO Server running on http://localhost:${PORT}`);
+  console.log(`\n🏦 CoreBank Panel PRO Server running on http://localhost:${PORT}`);
   console.log(`📡 API endpoints available at http://localhost:${PORT}/api\n`);
 
   // Pre-download WASM binary & OCR model
