@@ -105,6 +105,7 @@ const fetchBalance = async () => {
     const msg = err.response?.data?.message || err.message;
     if (msg.includes("Not logged in") || msg.includes("Session expired")) {
       ElMessage.warning("Please login first");
+      localStorage.removeItem('isAuthenticated');
       router.push("/login");
     } else {
       ElMessage.error(msg);
@@ -123,7 +124,7 @@ onMounted(fetchBalance);
 
 <style scoped>
 .dashboard {
-  max-width: 1100px;
+  width: 100%;
 }
 
 .page-header {

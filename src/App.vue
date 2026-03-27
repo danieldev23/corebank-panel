@@ -143,13 +143,22 @@ const checkSession = async () => {
   try {
     const { data } = await api.get("/status");
     sessionActive.value = data.loggedIn;
+    if (data.loggedIn) {
+      localStorage.setItem('isAuthenticated', 'true');
+    } else {
+      localStorage.removeItem('isAuthenticated');
+      if (route.path !== '/login' && route.path !== '/') router.push('/login');
+    }
   } catch {
     sessionActive.value = false;
+    localStorage.removeItem('isAuthenticated');
+    if (route.path !== '/login' && route.path !== '/') router.push('/login');
   }
 };
 
 const logout = () => {
   sessionActive.value = false;
+  localStorage.removeItem('isAuthenticated');
   router.push("/login");
 };
 

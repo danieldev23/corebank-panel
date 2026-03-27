@@ -316,6 +316,7 @@ const fetchTransactions = async () => {
     const msg = err.response?.data?.message || err.message;
     if (msg.includes("Not logged in") || msg.includes("Session expired")) {
       ElMessage.warning("Please login first");
+      localStorage.removeItem('isAuthenticated');
       router.push("/login");
     } else {
       ElMessage.error(msg);
@@ -352,7 +353,7 @@ onMounted(initData);
 
 <style scoped>
 .transactions {
-  max-width: 1200px;
+  width: 100%;
 }
 
 .page-header {

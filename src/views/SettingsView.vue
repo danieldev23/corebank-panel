@@ -201,7 +201,7 @@ onMounted(() => {
 <style scoped>
 .settings-page {
   padding: 24px 32px;
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding-bottom: 120px;
 }

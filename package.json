@@ -16,7 +16,7 @@
     "echarts": "^6.0.0",
     "element-plus": "^2.13.6",
     "express": "^5.2.1",
-    "onnxruntime-node": "^1.24.3",
+    "onnxruntime-node": "^1.19.2",
     "qrcode.vue": "^3.8.0",
     "sharp": "^0.34.5",
     "tsx": "^4.21.0",
